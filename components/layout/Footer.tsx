@@ -11,14 +11,14 @@ export default function Footer({ locale }: { locale: string }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Col 1: Brand & Info */}
-          <div className="space-y-4">
+            <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-csps-maroon/40 bg-white flex-shrink-0 shadow-md">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-csps-maroon/40 bg-white flex-shrink-0 shadow-md">
                 <Image
                   src="/logo.jpg"
                   alt="Creative Science Private School"
                   fill
-                  className="object-contain p-0.5"
+                  className="object-contain p-1"
                 />
               </div>
               <div>
@@ -26,10 +26,13 @@ export default function Footer({ locale }: { locale: string }) {
                   {locale === "ar" ? "مدرسة الإبداع العلمي" : "Creative Science"}
                 </span>
                 <span className="text-xs text-csps-gold font-medium">
-                  {locale === "ar" ? "الخاصة – صلالة" : "Private School • Salalah"}
+                  {locale === "ar" ? "الخاصة (ثنائية اللغة) – صلالة" : "Private School (Bilingual) • Salalah"}
                 </span>
               </div>
             </div>
+            <p className="text-xs text-amber-200/90 font-medium italic border-r-2 border-csps-gold pr-3 pl-3">
+              «{dict.footer.slogan}»
+            </p>
             <p className="text-sm text-slate-400 leading-relaxed">
               {dict.footer.desc}
             </p>
@@ -56,13 +59,18 @@ export default function Footer({ locale }: { locale: string }) {
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/admissions`} className="hover:text-csps-gold transition-colors">
-                  {dict.nav.admissions}
+                <Link href={`/${locale}#facilities`} className="hover:text-csps-gold transition-colors">
+                  {dict.nav.facilities}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}#facilities`} className="hover:text-csps-gold transition-colors">
-                  {dict.nav.facilities}
+                <Link href={`/${locale}#achievements`} className="hover:text-csps-gold transition-colors">
+                  {dict.nav.achievements}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/admissions`} className="hover:text-csps-gold transition-colors">
+                  {dict.nav.admissions}
                 </Link>
               </li>
               <li>
@@ -73,17 +81,20 @@ export default function Footer({ locale }: { locale: string }) {
             </ul>
           </div>
 
-          {/* Col 3: Academic Stages */}
+          {/* Col 3: Academic Stages & Labs */}
           <div>
             <h3 className="text-white font-semibold text-base mb-4 border-b border-slate-700 pb-2">
-              {locale === "ar" ? "المراحل الدراسية" : "Grade Programs"}
+              {locale === "ar" ? "المراحل والتجهيزات" : "Programs & 20 Labs"}
             </h3>
             <ul className="space-y-2.5 text-sm text-slate-400">
               <li>{dict.academics.levels[0].stage}</li>
               <li>{dict.academics.levels[1].stage}</li>
               <li>{dict.academics.levels[2].stage}</li>
-              <li className="pt-2 text-xs text-csps-teal font-medium">
-                {locale === "ar" ? "مختبرات العلوم والذكاء الاصطناعي" : "Robotics & Science Stream"}
+              <li className="pt-2 text-xs text-csps-gold font-medium">
+                {locale === "ar" ? "🏆 جائزة التصميم الهندسي بالسلطنة 2026" : "🏆 VEX IQ National Design Award 2026"}
+              </li>
+              <li className="text-xs text-cyan-300 font-medium">
+                {locale === "ar" ? "🔬 20 معملاً ومرفقاً تخصصياً" : "🔬 20 Specialized Scientific Labs"}
               </li>
             </ul>
           </div>
@@ -91,7 +102,7 @@ export default function Footer({ locale }: { locale: string }) {
           {/* Col 4: Location & Contact */}
           <div>
             <h3 className="text-white font-semibold text-base mb-4 border-b border-slate-700 pb-2">
-              {locale === "ar" ? "معلومات التواصل" : "Salalah Campus"}
+              {locale === "ar" ? "معلومات التواصل والحرم" : "Salalah Campus"}
             </h3>
             <ul className="space-y-3 text-sm text-slate-400">
               <li className="flex items-start gap-2.5">
@@ -100,11 +111,15 @@ export default function Footer({ locale }: { locale: string }) {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-csps-gold flex-shrink-0" />
-                <span>{dict.location.phone}</span>
+                <a href="tel:+96823138166" className="hover:text-white transition">
+                  {dict.location.phone} / {dict.location.mobile}
+                </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-csps-gold flex-shrink-0" />
-                <span>{dict.location.email}</span>
+                <a href={`mailto:${dict.location.email}`} className="hover:text-white transition">
+                  {dict.location.email}
+                </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 text-csps-gold flex-shrink-0" />

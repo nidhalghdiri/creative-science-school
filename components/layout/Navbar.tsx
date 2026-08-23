@@ -21,6 +21,7 @@ export default function Navbar({ locale }: { locale: string }) {
     { name: dict.nav.about, href: `/${locale}/about` },
     { name: dict.nav.academics, href: `/${locale}/academics` },
     { name: dict.nav.facilities, href: `/${locale}#facilities` },
+    { name: dict.nav.achievements, href: `/${locale}#achievements` },
     { name: dict.nav.admissions, href: `/${locale}/admissions` },
     { name: dict.nav.contact, href: `/${locale}/contact` },
   ];
@@ -35,18 +36,27 @@ export default function Navbar({ locale }: { locale: string }) {
               <GraduationCap className="w-3.5 h-3.5" />
               {dict.footer.moeLicensed}
             </span>
-            <span className="hidden sm:inline text-slate-300">|</span>
+            <span className="hidden sm:inline text-slate-400">|</span>
             <span className="hidden sm:inline text-slate-300">
-              📍 Salalah, Sultanate of Oman
+              📍 {locale === "ar" ? "عوقد الشمالية – صلالة" : "North Awqad, Salalah"}
             </span>
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="tel:+96823200000"
+              href="tel:+96823138166"
               className="flex items-center gap-1 text-slate-200 hover:text-white transition"
             >
               <PhoneCall className="w-3 h-3 text-csps-gold" />
-              <span>+968 23 200 000</span>
+              <span>+968 23 13 81 66</span>
+            </a>
+            <span className="hidden md:inline text-slate-500">/</span>
+            <a
+              href="https://wa.me/96898066400"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-1 text-emerald-300 hover:text-emerald-200 transition font-medium"
+            >
+              <span>+968 98 06 64 00</span>
             </a>
             <Link
               href={newPath}
