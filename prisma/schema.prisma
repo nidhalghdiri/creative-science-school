@@ -1,0 +1,94 @@
+// Creative Science Private School - Database Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  TEACHER
+  PARENT
+  STUDENT
+}
+
+enum AdmissionStatus {
+  PENDING
+  REVIEWING
+  ACCEPTED
+  REJECTED
+  WAITLISTED
+}
+
+enum GradeLevel {
+  KG1
+  KG2
+  PRIMARY_1
+  PRIMARY_2
+  PRIMARY_3
+  PRIMARY_4
+  PRIMARY_5
+  PRIMARY_6
+  MIDDLE_7
+  MIDDLE_8
+  MIDDLE_9
+  HIGH_10
+  HIGH_11
+  HIGH_12
+}
+
+model AdmissionApplication {
+  id              String          @id @default(cuid())
+  studentNameEn   String
+  studentNameAr   String
+  parentName      String
+  email           String
+  phone           String
+  gradeApplyingFor GradeLevel
+  academicYear    String          @default("2026-2027")
+  previousSchool  String?
+  notes           String?
+  status          AdmissionStatus @default(PENDING)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@map("admission_applications")
+}
+
+model NewsEvent {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  titleEn     String
+  titleAr     String
+  summaryEn   String
+  summaryAr   String
+  contentEn   String
+  contentAr   String
+  category    String   // e.g. STEM, Sports, Cultural, Announcement
+  imageUrl    String?
+  publishedAt DateTime @default(now())
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("news_events")
+}
+
+model Inquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("inquiries")
+}
