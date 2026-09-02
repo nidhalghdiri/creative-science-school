@@ -29,19 +29,19 @@ export default function Navbar({ locale }: { locale: string }) {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
       {/* Top Banner Bar */}
-      <div className="bg-csps-navyDark text-white text-xs py-2 px-4 border-b border-csps-maroon/30">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-csps-gold font-medium">
-              <GraduationCap className="w-3.5 h-3.5" />
-              {dict.footer.moeLicensed}
+      <div className="bg-csps-navyDark text-white text-[10px] sm:text-xs py-1.5 sm:py-2 px-2 sm:px-4 border-b border-csps-maroon/30">
+        <div className="max-w-7xl mx-auto flex justify-between items-center gap-1">
+          <div className="flex items-center gap-1.5 sm:gap-4">
+            <span className="flex items-center gap-1 sm:gap-1.5 text-csps-gold font-medium">
+              <GraduationCap className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+              <span className="truncate max-w-[170px] sm:max-w-none">{dict.footer.moeLicensed}</span>
             </span>
             <span className="hidden sm:inline text-slate-400">|</span>
             <span className="hidden sm:inline text-slate-300">
               📍 {locale === "ar" ? "عوقد الشمالية – صلالة" : "North Awqad, Salalah"}
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
             <a
               href="tel:+96823138166"
               className="flex items-center gap-1 text-slate-200 hover:text-white transition"

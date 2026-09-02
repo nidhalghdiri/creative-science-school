@@ -35,6 +35,18 @@ export default async function AboutPage({ params }: PageProps) {
             ? "تعتبر مدرسة الإبداع العلمي الخاصة صرحاً تعليمياً متميزاً في مدينة صلالة بمحافظة ظفار، تهدف إلى إعداد جيل مبدع ومتمكن في مجالات العلوم والتكنولوجيا والهندسة والرياضيات (STEM) مع الالتزام بالقيم الإسلامية والأخلاقية."
             : "Creative Science Private School stands as a leading educational hub in Salalah, Dhofar Governorate, dedicated to shaping creative, STEM-fluent leaders rooted in Islamic principles and Omani cultural values."}
         </p>
+
+        {/* Campus Tour Video */}
+        <div className="mt-10 md:mt-14 max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-csps-navy/10 border border-slate-200 aspect-video bg-slate-900 relative">
+          <video 
+            src="/videos/tour.mp4" 
+            controls
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+            aria-label={isAr ? "جولة في مرافق المدرسة" : "School Campus Tour"}
+          />
+        </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
