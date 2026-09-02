@@ -60,7 +60,7 @@ export default function Navbar({ locale }: { locale: string }) {
             </a>
             <Link
               href={newPath}
-              className="bg-white/10 hover:bg-white/20 text-csps-gold px-2.5 py-0.5 rounded font-semibold uppercase text-[11px] transition"
+              className="hidden lg:flex items-center bg-white/10 hover:bg-white/20 text-csps-gold px-2.5 py-0.5 rounded font-semibold uppercase text-[11px] transition"
             >
               {dict.nav.languageToggle}
             </Link>
