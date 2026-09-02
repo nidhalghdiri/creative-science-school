@@ -5,6 +5,17 @@ type PageProps = {
   params: Promise<{ locale: string }>;
 };
 
+export async function generateMetadata({ params }: PageProps) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+  return {
+    title: isAr ? "عن المدرسة" : "About Us",
+    description: isAr 
+      ? "تعتبر مدرسة الإبداع العلمي الخاصة صرحاً تعليمياً متميزاً في مدينة صلالة بمحافظة ظفار."
+      : "Creative Science Private School stands as a leading educational hub in Salalah, Dhofar Governorate.",
+  };
+}
+
 export default async function AboutPage({ params }: PageProps) {
   const { locale } = await params;
   const dict = locale === "ar" ? dictionary.ar : dictionary.en;

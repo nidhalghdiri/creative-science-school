@@ -5,6 +5,17 @@ type PageProps = {
   params: Promise<{ locale: string }>;
 };
 
+export async function generateMetadata({ params }: PageProps) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+  return {
+    title: isAr ? "اتصل بنا" : "Contact Us",
+    description: isAr 
+      ? "تواصل مع مدرسة الإبداع العلمي الخاصة في صلالة. نحن هنا للإجابة على استفساراتكم."
+      : "Get in touch with Creative Science Private School in Salalah. We are here to answer your questions.",
+  };
+}
+
 export default async function ContactPage({ params }: PageProps) {
   const { locale } = await params;
   const dict = locale === "ar" ? dictionary.ar : dictionary.en;

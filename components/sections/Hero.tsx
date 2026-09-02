@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { dictionary } from "@/lib/dictionary";
 import { Sparkles, ArrowRight, ArrowLeft, ShieldCheck, Microscope, Cpu, Award, Play } from "lucide-react";
 import { FadeIn, FloatElement, MotionCard } from "@/components/ui/motion";
 import { motion } from "framer-motion";
 
 export default function Hero({ locale }: { locale: string }) {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const dict = locale === "ar" ? dictionary.ar : dictionary.en;
   const isAr = locale === "ar";
   const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
@@ -120,24 +122,40 @@ export default function Hero({ locale }: { locale: string }) {
                 </FloatElement>
 
                 {/* Campus Image Frame */}
-                <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-slate-700/60 shadow-lg group">
-                  <Image
-                    src="/images/hero-students.jpg"
-                    alt="Creative Science Private School Students"
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
-                  <div className="absolute bottom-3 start-3 end-3 flex justify-between items-center text-white">
-                    <div>
-                      <p className="text-xs font-bold">{isAr ? "مدرسة العلوم الإبداعية" : "Creative Science School"}</p>
-                      <p className="text-[10px] text-csps-gold font-medium">{isAr ? "صلالة - سلطنة عمان" : "Salalah, Sultanate of Oman"}</p>
-                    </div>
-                    <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center">
-                      <Play className="w-3.5 h-3.5 text-white fill-white ms-0.5" />
-                    </div>
-                  </div>
+                <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-slate-700/60 shadow-lg group cursor-pointer" onClick={() => setIsVideoPlaying(true)}>
+                  {!isVideoPlaying ? (
+                    <>
+                      <Image
+                        src="/images/hero-students.jpg"
+                        alt="Creative Science Private School Students"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                      <div className="absolute bottom-3 start-3 end-3 flex justify-between items-center text-white">
+                        <div>
+                          <p className="text-xs font-bold">{isAr ? "مدرسة العلوم الإبداعية" : "Creative Science School"}</p>
+                          <p className="text-[10px] text-csps-gold font-medium">{isAr ? "صلالة - سلطنة عمان" : "Salalah, Sultanate of Oman"}</p>
+                        </div>
+                        <div 
+                          className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center group-hover:bg-csps-maroon transition-colors"
+                          aria-label={isAr ? "تشغيل فيديو المقدمة" : "Play intro video"}
+                          role="button"
+                        >
+                          <Play className="w-3.5 h-3.5 text-white fill-white ms-0.5" aria-hidden="true" />
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <video 
+                      src="/videos/intro.mp4"
+                      autoPlay
+                      controls
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </div>
 
                 {/* Grid of Learning Pillars */}

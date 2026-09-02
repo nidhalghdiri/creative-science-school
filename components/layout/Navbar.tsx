@@ -97,7 +97,7 @@ export default function Navbar({ locale }: { locale: string }) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-7">
             {navLinks.map((link) => (
               <Link
                 key={link.href}

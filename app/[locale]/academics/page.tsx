@@ -7,6 +7,17 @@ type PageProps = {
   params: Promise<{ locale: string }>;
 };
 
+export async function generateMetadata({ params }: PageProps) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+  return {
+    title: isAr ? "المناهج والمسارات الأكاديمية" : "Academics & Curriculum",
+    description: isAr 
+      ? "الجمع بين صرامة معايير علوم وتكنولوجيا كامبريدج والقيم التربوية العمانية الأصيلة."
+      : "Combining Cambridge STEM standards with Omani national educational heritage.",
+  };
+}
+
 export default async function AcademicsPage({ params }: PageProps) {
   const { locale } = await params;
   const dict = locale === "ar" ? dictionary.ar : dictionary.en;

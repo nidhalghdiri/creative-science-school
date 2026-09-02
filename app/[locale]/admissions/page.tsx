@@ -5,6 +5,17 @@ type PageProps = {
   params: Promise<{ locale: string }>;
 };
 
+export async function generateMetadata({ params }: PageProps) {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+  return {
+    title: isAr ? "القبول والتسجيل" : "Admissions",
+    description: isAr 
+      ? "يسرنا استقبال طلبات التسجيل والقبول للعام الدراسي 2026-2027 لجميع المراحل في صلالة."
+      : "We are pleased to welcome applications for Academic Year 2026-2027 across all grades in Salalah.",
+  };
+}
+
 export default async function AdmissionsPage({ params }: PageProps) {
   const { locale } = await params;
   const dict = locale === "ar" ? dictionary.ar : dictionary.en;
