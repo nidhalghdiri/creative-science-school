@@ -52,28 +52,19 @@ export default function ContactSection({ locale }: { locale: string }) {
             </div>
           </div>
 
-          {/* Interactive Map Visual Placeholder / Salalah Campus Map Frame */}
-          <div className="lg:col-span-7">
-            <div className="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900 relative min-h-[380px] flex flex-col justify-between p-8 text-white">
-              <div className="absolute inset-0 bg-gradient-to-tr from-csps-navy via-slate-900 to-csps-maroon/40 opacity-90" />
-              <div className="relative z-10 space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-csps-gold/20 text-csps-gold text-xs font-bold border border-csps-gold/30">
-                  <span>📍 Salalah, Dhofar Governorate</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white">
-                  {locale === "ar" ? "حرم مدرسة الإبداع العلمي بصلالة" : "Creative Science Salalah Campus"}
-                </h3>
-                <p className="text-sm text-slate-300 max-w-lg leading-relaxed">
-                  {locale === "ar"
-                    ? "موقع متميز يسهل الوصول إليه، مجهز بأحدث معايير السلامة والأمان والأتوبيسات المدرسية المكيّفة لجميع أنحاء مدينة صلالة وضواحيها."
-                    : "Conveniently accessible campus equipped with modern security standards and air-conditioned school transportation covering all regions of Salalah."}
-                </p>
-              </div>
-
-              <div className="relative z-10 pt-6 border-t border-slate-700/80 flex flex-wrap gap-4 items-center justify-between text-xs font-semibold text-slate-300">
-                <span>🚌 School Bus Coverage Across Salalah</span>
-                <span>🔒 24/7 Campus Security & Surveillance</span>
-              </div>
+          {/* Interactive Map Frame */}
+          <div className="lg:col-span-7 h-full">
+            <div className="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 relative min-h-[380px] w-full h-full min-h-[400px]">
+              <iframe
+                src="https://maps.google.com/maps?q=Creative+Science+Private+School+Salalah&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={locale === "ar" ? "خريطة موقع المدرسة" : "School Location Map"}
+              ></iframe>
             </div>
           </div>
         </div>
