@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Tajawal } from "next/font/google";
+import { headers } from "next/headers";
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -51,6 +52,9 @@ export default async function RootLayout({
 }: RootLayoutProps) {
   const { locale } = await params;
   const direction = locale === "ar" ? "rtl" : "ltr";
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "";
+  const isAdmin = pathname.includes("/admin");
 
   return (
     <html
@@ -63,9 +67,9 @@ export default async function RootLayout({
           locale === "ar" ? "font-arabic" : "font-english"
         }`}
       >
-        <Navbar locale={locale} />
+        {!isAdmin && <Navbar locale={locale} />}
         <main className="flex-grow">{children}</main>
-        <Footer locale={locale} />
+        {!isAdmin && <Footer locale={locale} />}
       </body>
     </html>
   );
